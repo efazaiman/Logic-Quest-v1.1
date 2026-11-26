@@ -1,0 +1,1404 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --font-display: 'Outfit', system-ui, -apple-system, sans-serif;
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+
+  /* Light theme — Sky Sanctuary & NEX11 */
+  --app-bg: #e0f2fe;
+  --app-text: #0f172a;
+  --app-text-muted: #334155;
+  --app-text-subtle: #64748b;
+
+  --accent-primary: #0284c7;
+  --accent-secondary: #06b6d4;
+  --accent-glow: rgba(14, 165, 233, 0.25);
+
+  --glass-surface: rgba(255, 255, 255, 0.92);
+  --glass-surface-elevated: rgba(255, 255, 255, 0.96);
+  --glass-surface-subtle: rgba(255, 255, 255, 0.76);
+
+  --glass-border: rgba(255, 255, 255, 0.95);
+  --glass-border-subtle: rgba(226, 232, 240, 0.85);
+
+  --3d-cyan-grad: linear-gradient(135deg, #38bdf8 0%, #06b6d4 50%, #0284c7 100%);
+}
+
+.dark {
+  /* Dark theme — Enchanted Cosmic Sanctuary & NEX11 */
+  --app-bg: #020512;
+  --app-text: #f8fafc;
+  --app-text-muted: #94a3b8;
+  --app-text-subtle: #64748b;
+
+  --accent-primary: #0ea5e9;
+  --accent-secondary: #6366f1;
+  --accent-glow: rgba(14, 165, 233, 0.25);
+
+  --glass-surface: rgba(10, 20, 44, 0.90);
+  --glass-surface-elevated: rgba(13, 24, 52, 0.94);
+  --glass-surface-subtle: rgba(6, 14, 32, 0.76);
+
+  --glass-border: rgba(56, 189, 248, 0.28);
+  --glass-border-subtle: rgba(255, 255, 255, 0.12);
+
+  --3d-cyan-grad: linear-gradient(135deg, #22d3ee 0%, #06b6d4 55%, #0284c7 100%);
+}
+
+@layer base {
+  html,
+  body {
+    font-family: var(--font-sans);
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    background-color: var(--app-bg);
+    color: var(--app-text);
+    overflow-x: hidden;
+    max-width: 100vw;
+    transition: background-color 0.25s ease, color 0.2s ease;
+  }
+
+  h1, h2, h3, h4, .font-display {
+    font-family: var(--font-display);
+  }
+
+  .font-mono {
+    font-family: var(--font-mono);
+  }
+}
+
+/* ============================================================================
+   COSMIC PUZZLE SANCTUARY — LAYER 1 BASE ATMOSPHERES
+   ============================================================================ */
+
+/* Dark Theme — Enchanted Cosmic Mystery */
+.logic-quest-dark-atmosphere {
+  background:
+    radial-gradient(
+      ellipse at 50% 75%,
+      rgba(14, 116, 190, 0.18),
+      transparent 48%
+    ),
+    radial-gradient(
+      ellipse at 15% 25%,
+      rgba(30, 64, 175, 0.16),
+      transparent 42%
+    ),
+    radial-gradient(
+      ellipse at 85% 20%,
+      rgba(8, 145, 178, 0.12),
+      transparent 38%
+    ),
+    linear-gradient(
+      180deg,
+      #020512 0%,
+      #06112a 52%,
+      #030714 100%
+    );
+}
+
+/* Light Theme — Sky Sanctuary */
+.logic-quest-light-atmosphere {
+  background:
+    radial-gradient(
+      ellipse at 50% 78%,
+      rgba(14, 165, 233, 0.14),
+      transparent 48%
+    ),
+    radial-gradient(
+      ellipse at 15% 20%,
+      rgba(255, 255, 255, 0.75),
+      transparent 42%
+    ),
+    radial-gradient(
+      ellipse at 85% 25%,
+      rgba(56, 189, 248, 0.18),
+      transparent 40%
+    ),
+    linear-gradient(
+      180deg,
+      #38bdf8 0%,
+      #7dd3fc 36%,
+      #bae6fd 72%,
+      #e0f2fe 100%
+    );
+}
+
+/* Pause environmental animations when browser tab is hidden */
+.sanctuary-paused,
+.sanctuary-paused * {
+  animation-play-state: paused !important;
+}
+
+/* ============================================================================
+   RESPONSIVE FULL-BLEED SANCTUARY ARTWORK & ALIGNED ANIMATION STAGE
+   ============================================================================ */
+
+/* Full-bleed sharp sanctuary image container — zero blur, zero mask bands */
+.sanctuary-artwork-frame {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* Vector & crystal animation stage aligned to the sanctuary architecture */
+.sanctuary-vector-stage {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Tablet Landscape (1.0 < aspect <= 14/9, e.g. 1024×768, 1180×820):
+   Aligns the 16:9 animated vector portals & crystals with the 4:3 sanctuary artwork */
+@media (max-aspect-ratio: 14/9) and (min-aspect-ratio: 1/1) {
+  .sanctuary-vector-stage {
+    inset: auto;
+    left: 50%;
+    top: 49%;
+    width: 104%;
+    aspect-ratio: 16 / 9;
+    height: auto;
+    transform: translate(-50%, -50%);
+  }
+}
+
+/* Tablet Portrait (5/8 < aspect <= 1.0, e.g. 768×1024, 800×1280):
+   Aligns the 16:9 animated vector portals & crystals with the central sanctuary
+   of the 3:4 tablet portrait artwork */
+@media (max-aspect-ratio: 1/1) and (min-aspect-ratio: 5/8) {
+  .sanctuary-vector-stage {
+    inset: auto;
+    left: 50%;
+    top: 47%;
+    width: 106%;
+    aspect-ratio: 16 / 9;
+    height: auto;
+    transform: translate(-50%, -50%);
+  }
+}
+
+/* Phone Portrait (aspect <= 5/8, e.g. 360×640, 390×844, 430×932):
+   Aligns the 16:9 animated vector portals & crystals with the central sanctuary
+   of the 9:16 phone portrait artwork */
+@media (max-aspect-ratio: 5/8) {
+  .sanctuary-vector-stage {
+    inset: auto;
+    left: 50%;
+    top: 48%;
+    width: 108%;
+    aspect-ratio: 16 / 9;
+    height: auto;
+    transform: translate(-50%, -50%);
+  }
+}
+
+/* ============================================================================
+   ENCHANTED COSMIC SANCTUARY — LAYER 2 ENVIRONMENTAL MOTION & EFFECTS
+   ============================================================================ */
+
+/* 1. Floating Environmental Architecture & Independent Crystal Levitation */
+@keyframes sanctuaryFloatSlow {
+  0%, 100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, -6.5px, 0);
+  }
+}
+
+@keyframes sanctuaryFloatReverse {
+  0%, 100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, 6px, 0);
+  }
+}
+
+@keyframes sanctuaryDistantParallax {
+  0%, 100% {
+    transform: translate3d(-2px, 0, 0);
+  }
+  50% {
+    transform: translate3d(2px, -3.5px, 0);
+  }
+}
+
+@keyframes sanctuaryCrystalLevitateA {
+  0%, 100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, -5px, 0);
+  }
+}
+
+@keyframes sanctuaryCrystalLevitateB {
+  0%, 100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, 4.5px, 0);
+  }
+}
+
+/* 2. Multi-Layer Clouds & Atmospheric Mist (Transform + Opacity Only, Zero Blur Re-raster) */
+@keyframes sanctuaryCloudFarLtr {
+  0% {
+    transform: translate3d(-7%, -2px, 0) scaleX(1.06);
+    opacity: 0.72;
+  }
+  50% {
+    transform: translate3d(7%, 4px, 0) scaleX(1.12);
+    opacity: 0.94;
+  }
+  100% {
+    transform: translate3d(-7%, -2px, 0) scaleX(1.06);
+    opacity: 0.72;
+  }
+}
+
+@keyframes sanctuaryCloudMidRtl {
+  0% {
+    transform: translate3d(8%, 4px, 0) scaleX(1.1);
+    opacity: 0.85;
+  }
+  50% {
+    transform: translate3d(-8%, -5px, 0) scaleX(1.04);
+    opacity: 0.65;
+  }
+  100% {
+    transform: translate3d(8%, 4px, 0) scaleX(1.1);
+    opacity: 0.85;
+  }
+}
+
+@keyframes sanctuaryHorizonCloudSea {
+  0%, 100% {
+    transform: translate3d(-3.5%, 2px, 0) scale(1.04, 0.97);
+    opacity: 0.76;
+  }
+  50% {
+    transform: translate3d(3.5%, -4px, 0) scale(1.08, 1.04);
+    opacity: 0.96;
+  }
+}
+
+@keyframes sanctuaryIslandMistLeft {
+  0%, 100% {
+    transform: translate3d(-4.5%, 0, 0) translateY(3px) scaleX(1.05);
+    opacity: 0.68;
+  }
+  50% {
+    transform: translate3d(5.5%, 0, 0) translateY(-5px) scaleX(1.12);
+    opacity: 0.95;
+  }
+}
+
+@keyframes sanctuaryIslandMistRight {
+  0%, 100% {
+    transform: translate3d(5%, 0, 0) translateY(-3px) scaleX(1.08);
+    opacity: 0.72;
+  }
+  50% {
+    transform: translate3d(-5%, 0, 0) translateY(5px) scaleX(1.03);
+    opacity: 0.94;
+  }
+}
+
+/* 3. Crystal Internal Illumination, Edge Glints & Architecture Glow Reflections */
+@keyframes sanctuaryCrystalPulse {
+  0%, 100% {
+    opacity: 0.42;
+    transform: scale(0.97);
+  }
+  50% {
+    opacity: 0.94;
+    transform: scale(1.04);
+  }
+}
+
+@keyframes sanctuaryCrystalEdgeGlint {
+  0%, 34%, 66%, 100% {
+    opacity: 0.06;
+  }
+  48% {
+    opacity: 0.92;
+  }
+  52% {
+    opacity: 0.45;
+  }
+}
+
+@keyframes sanctuaryArchReflection {
+  0%, 100% {
+    opacity: 0.16;
+  }
+  50% {
+    opacity: 0.52;
+  }
+}
+
+/* 4. Magical Particles, Dust, Sparkles & Structure Orbit Trails */
+@keyframes sanctuaryDustDrift {
+  0% {
+    transform: translate3d(-12px, 10px, 0);
+    opacity: 0;
+  }
+  25% {
+    opacity: 0.52;
+  }
+  75% {
+    opacity: 0.46;
+  }
+  100% {
+    transform: translate3d(18px, -26px, 0);
+    opacity: 0;
+  }
+}
+
+@keyframes sanctuaryUpwardMote {
+  0% {
+    transform: translate3d(0, 14px, 0) scale(0.85);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.78;
+  }
+  55% {
+    transform: translate3d(9px, -24px, 0) scale(1.16);
+    opacity: 0.96;
+  }
+  85% {
+    opacity: 0.52;
+  }
+  100% {
+    transform: translate3d(-5px, -56px, 0) scale(0.8);
+    opacity: 0;
+  }
+}
+
+@keyframes sanctuarySparkleTwinkle {
+  0%, 100% {
+    transform: scale(0.5) rotate(0deg);
+    opacity: 0.12;
+  }
+  50% {
+    transform: scale(1.18) rotate(45deg);
+    opacity: 0.92;
+  }
+}
+
+@keyframes sanctuaryStructureOrbit {
+  0% {
+    stroke-dashoffset: 240;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* 5. Magical Energy Streams, Ring Travelers, Portals & Runes */
+@keyframes sanctuaryEnergyFlow {
+  0% {
+    stroke-dashoffset: 320;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes sanctuaryRingTravel {
+  0% {
+    stroke-dashoffset: 1540;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes sanctuaryRingTravelReverse {
+  0% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: 1540;
+  }
+}
+
+@keyframes sanctuaryPortalSpin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes sanctuaryPortalSpinReverse {
+  0% {
+    transform: rotate(360deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes sanctuaryRunePulse {
+  0%, 100% {
+    opacity: 0.30;
+  }
+  50% {
+    opacity: 0.88;
+  }
+}
+
+/* 6. Cinematic Aurora, Volumetric Rays & Atmospheric Light Breathing */
+@keyframes sanctuaryAuroraWave {
+  0%, 100% {
+    transform: translate3d(-2.5%, 0, 0) scaleY(0.98);
+    opacity: 0.52;
+  }
+  50% {
+    transform: translate3d(2.5%, 7px, 0) scaleY(1.09);
+    opacity: 0.88;
+  }
+}
+
+@keyframes sanctuaryAuroraSecondary {
+  0%, 100% {
+    transform: translate3d(2%, 4px, 0) scaleY(1.04);
+    opacity: 0.38;
+  }
+  50% {
+    transform: translate3d(-2%, -5px, 0) scaleY(0.95);
+    opacity: 0.74;
+  }
+}
+
+@keyframes sanctuaryLightBreathe {
+  0%, 100% {
+    opacity: 0.66;
+    transform: scale(0.98);
+  }
+  50% {
+    opacity: 0.96;
+    transform: scale(1.035);
+  }
+}
+
+@keyframes sanctuaryRayShimmer {
+  0%, 100% {
+    opacity: 0.42;
+  }
+  50% {
+    opacity: 0.86;
+  }
+}
+
+.sanctuary-float-slow {
+  animation: sanctuaryFloatSlow 16s ease-in-out infinite;
+  will-change: transform;
+}
+
+.sanctuary-float-reverse {
+  animation: sanctuaryFloatReverse 19s ease-in-out infinite;
+  will-change: transform;
+}
+
+.sanctuary-distant-parallax {
+  animation: sanctuaryDistantParallax 26s ease-in-out infinite;
+  will-change: transform;
+}
+
+.sanctuary-crystal-levitate-a {
+  animation: sanctuaryCrystalLevitateA 11.5s ease-in-out infinite;
+  will-change: transform;
+}
+
+.sanctuary-crystal-levitate-b {
+  animation: sanctuaryCrystalLevitateB 13.4s ease-in-out infinite;
+  will-change: transform;
+}
+
+.sanctuary-cloud-far-ltr {
+  animation: sanctuaryCloudFarLtr 56s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+.sanctuary-cloud-mid-rtl {
+  animation: sanctuaryCloudMidRtl 44s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+.sanctuary-cloud-horizon-sea {
+  animation: sanctuaryHorizonCloudSea 68s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+.sanctuary-island-mist-left {
+  animation: sanctuaryIslandMistLeft 34s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+.sanctuary-island-mist-right {
+  animation: sanctuaryIslandMistRight 39s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+.sanctuary-crystal-pulse {
+  animation-name: sanctuaryCrystalPulse;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.sanctuary-crystal-glint {
+  animation-name: sanctuaryCrystalEdgeGlint;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+.sanctuary-arch-reflection {
+  animation-name: sanctuaryArchReflection;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+.sanctuary-dust-speck {
+  animation-name: sanctuaryDustDrift;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  will-change: transform, opacity;
+}
+
+.sanctuary-upward-mote {
+  animation-name: sanctuaryUpwardMote;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  will-change: transform, opacity;
+}
+
+.sanctuary-sparkle {
+  animation-name: sanctuarySparkleTwinkle;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  will-change: transform, opacity;
+}
+
+.sanctuary-structure-orbit {
+  animation: sanctuaryStructureOrbit 11s linear infinite;
+}
+
+.sanctuary-energy-stream {
+  animation: sanctuaryEnergyFlow 14s linear infinite;
+}
+
+.sanctuary-ring-traveler {
+  animation: sanctuaryRingTravel 22s linear infinite;
+}
+
+.sanctuary-ring-traveler-reverse {
+  animation: sanctuaryRingTravelReverse 26s linear infinite;
+}
+
+.sanctuary-portal-spin {
+  animation: sanctuaryPortalSpin 64s linear infinite;
+}
+
+.sanctuary-portal-spin-reverse {
+  animation: sanctuaryPortalSpinReverse 72s linear infinite;
+}
+
+.sanctuary-rune-pulse {
+  animation: sanctuaryRunePulse 5.5s ease-in-out infinite;
+}
+
+.sanctuary-aurora-veil {
+  animation: sanctuaryAuroraWave 20s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+.sanctuary-aurora-secondary {
+  animation: sanctuaryAuroraSecondary 25s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+.sanctuary-light-breathe {
+  animation: sanctuaryLightBreathe 11s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+.sanctuary-ray-shimmer-1 {
+  animation: sanctuaryRayShimmer 14s ease-in-out infinite;
+}
+
+.sanctuary-ray-shimmer-2 {
+  animation: sanctuaryRayShimmer 18s ease-in-out infinite -6s;
+}
+
+@media (max-width: 640px) {
+  .sanctuary-float-slow,
+  .sanctuary-float-reverse {
+    opacity: 0.76;
+  }
+}
+
+/* ============================================================================
+   NEX11 3D GLASS CARD, BUTTON & ICON SURFACES (AUDITED & REFINED)
+   ============================================================================ */
+
+/* A. Standard 3D glass card — Main navigation, collection cards & content panels */
+.card-3d-standard {
+  background: linear-gradient(
+    180deg,
+    rgba(224, 242, 254, 0.68) 0%,
+    rgba(207, 236, 253, 0.62) 68%,
+    rgba(196, 231, 252, 0.58) 100%
+  );
+
+  border: 1.5px solid rgba(56, 189, 248, 0.62);
+
+  box-shadow:
+    inset 0 1.5px 0.5px 0 rgba(255, 255, 255, 0.78),
+    inset 0 -2px 0 0 rgba(14, 165, 233, 0.18),
+    0 10px 24px -4px rgba(15, 23, 42, 0.10),
+    0 3px 8px -2px rgba(3, 105, 161, 0.06);
+
+  backdrop-filter: blur(10px) saturate(145%);
+  -webkit-backdrop-filter: blur(10px) saturate(145%);
+
+  transition:
+    transform 0.2s cubic-bezier(0.2, 0.8, 0.3, 1),
+    box-shadow 0.2s cubic-bezier(0.2, 0.8, 0.3, 1),
+    border-color 0.2s ease;
+}
+
+.dark .card-3d-standard {
+  background: linear-gradient(
+    180deg,
+    rgba(16,32,68,0.80) 0%,
+    rgba(9,19,44,0.84) 100%
+  );
+
+  border: 1px solid rgba(56,189,248,0.42);
+
+  box-shadow:
+    inset 0 1.5px 0.5px 0 rgba(255,255,255,0.26),
+    inset 0 -2.5px 0 0 rgba(0,0,0,0.52),
+    0 12px 28px -3px rgba(0,0,0,0.68),
+    0 0 18px -3px rgba(6,182,212,0.16);
+
+  backdrop-filter: blur(10px) saturate(145%);
+  -webkit-backdrop-filter: blur(10px) saturate(145%);
+}
+
+.card-3d-standard:hover:not(:disabled) {
+  transform: translateY(-2px);
+}
+
+.card-3d-standard:active:not(:disabled) {
+  transform: translateY(1px) scale(0.99);
+}
+
+/* Static modifier for non-clickable panels/containers */
+.card-3d-static:hover,
+.card-3d-static:active {
+  transform: none !important;
+}
+
+/* Liquid Glass Outer Gameplay Container (Light & Translucent Sanctuary Blend) */
+.gameplay-liquid-glass {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.34) 0%,
+    rgba(240, 249, 255, 0.28) 55%,
+    rgba(224, 242, 254, 0.24) 100%
+  );
+  border: 1.5px solid rgba(255, 255, 255, 0.65);
+  box-shadow:
+    inset 0 1.5px 1px 0 rgba(255, 255, 255, 0.72),
+    inset 0 -1.5px 0 0 rgba(14, 165, 233, 0.12),
+    0 12px 30px -6px rgba(3, 105, 161, 0.12),
+    0 4px 10px -2px rgba(15, 23, 42, 0.05);
+  backdrop-filter: blur(7px) saturate(130%);
+  -webkit-backdrop-filter: blur(7px) saturate(130%);
+}
+
+.dark .gameplay-liquid-glass {
+  background: linear-gradient(
+    180deg,
+    rgba(10, 24, 56, 0.36) 0%,
+    rgba(6, 15, 38, 0.42) 100%
+  );
+  border: 1px solid rgba(56, 189, 248, 0.34);
+  box-shadow:
+    inset 0 1px 0.5px 0 rgba(255, 255, 255, 0.22),
+    inset 0 -1.5px 0 0 rgba(14, 165, 233, 0.14),
+    0 14px 32px -6px rgba(0, 0, 0, 0.50),
+    0 0 22px -4px rgba(6, 182, 212, 0.14);
+  backdrop-filter: blur(7px) saturate(130%);
+  -webkit-backdrop-filter: blur(7px) saturate(130%);
+}
+
+/* Moderately Translucent Question Surface inside Gameplay */
+.gameplay-question-glass {
+  background: linear-gradient(
+    180deg,
+    rgba(240, 249, 255, 0.72) 0%,
+    rgba(224, 242, 254, 0.64) 100%
+  );
+  border: 1px solid rgba(186, 230, 253, 0.82);
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.82);
+}
+
+.dark .gameplay-question-glass {
+  background: linear-gradient(
+    180deg,
+    rgba(14, 30, 68, 0.72) 0%,
+    rgba(9, 20, 48, 0.76) 100%
+  );
+  border: 1px solid rgba(56, 189, 248, 0.34);
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.16);
+}
+
+/* B. Compact 3D card — Statistics, secondary controls, puzzle slots & answer choices */
+.card-3d-compact {
+  background: linear-gradient(
+    180deg,
+    rgba(224, 242, 254, 0.70) 0%,
+    rgba(207, 236, 253, 0.62) 100%
+  );
+
+  border: 1.5px solid rgba(56, 189, 248, 0.58);
+
+  box-shadow:
+    inset 0 1.5px 0.5px 0 rgba(255, 255, 255, 0.78),
+    inset 0 -2px 0 0 rgba(14, 165, 233, 0.18),
+    0 6px 16px -2px rgba(15, 23, 42, 0.09),
+    0 2px 5px -1px rgba(3, 105, 161, 0.05);
+
+  backdrop-filter: blur(8px) saturate(140%);
+  -webkit-backdrop-filter: blur(8px) saturate(140%);
+
+  transition:
+    transform 0.18s cubic-bezier(0.2, 0.8, 0.3, 1),
+    box-shadow 0.18s ease,
+    border-color 0.18s ease;
+}
+
+.dark .card-3d-compact {
+  background: linear-gradient(
+    180deg,
+    rgba(17, 33, 70, 0.82) 0%,
+    rgba(10, 21, 46, 0.86) 100%
+  );
+
+  border: 1px solid rgba(56, 189, 248, 0.38);
+
+  box-shadow:
+    inset 0 1.5px 0.5px 0 rgba(255, 255, 255, 0.22),
+    inset 0 -2px 0 0 rgba(0, 0, 0, 0.52),
+    0 7px 18px -2px rgba(0, 0, 0, 0.62),
+    0 0 12px -3px rgba(6, 182, 212, 0.14);
+
+  backdrop-filter: blur(8px) saturate(140%);
+  -webkit-backdrop-filter: blur(8px) saturate(140%);
+}
+
+.card-3d-compact:hover:not(:disabled) {
+  transform: translateY(-1.5px);
+}
+
+.card-3d-compact:active:not(:disabled) {
+  transform: translateY(1px) scale(0.985);
+}
+
+/* C. Featured 3D card — Primary focal actions, rank/results highlights & target slot */
+.card-3d-featured {
+  background: linear-gradient(
+    162deg,
+    rgba(224, 242, 254, 0.72) 0%,
+    rgba(207, 236, 253, 0.66) 54%,
+    rgba(186, 230, 253, 0.60) 100%
+  );
+
+  border: 1.5px solid rgba(6, 182, 212, 0.68);
+
+  box-shadow:
+    inset 0 2px 1px 0 rgba(255, 255, 255, 0.80),
+    inset 0 -3px 0 0 rgba(6, 182, 212, 0.22),
+    0 14px 32px -4px rgba(2, 132, 199, 0.14),
+    0 4px 12px -2px rgba(6, 182, 212, 0.10);
+
+  backdrop-filter: blur(10px) saturate(145%);
+  -webkit-backdrop-filter: blur(10px) saturate(145%);
+
+  transition:
+    transform 0.2s cubic-bezier(0.2, 0.8, 0.3, 1),
+    box-shadow 0.2s cubic-bezier(0.2, 0.8, 0.3, 1),
+    border-color 0.2s ease;
+}
+
+.dark .card-3d-featured {
+  background: linear-gradient(
+    162deg,
+    rgba(17,36,78,0.80) 0%,
+    rgba(11,23,52,0.84) 58%,
+    rgba(8,17,40,0.86) 100%
+  );
+
+  border: 1.5px solid rgba(34,211,238,0.54);
+
+  box-shadow:
+    inset 0 2px 1px 0 rgba(255,255,255,0.30),
+    inset 0 -3px 0 0 rgba(0,0,0,0.58),
+    0 16px 38px -4px rgba(0,0,0,0.76),
+    0 0 26px -2px rgba(6,182,212,0.22);
+
+  backdrop-filter: blur(10px) saturate(145%);
+  -webkit-backdrop-filter: blur(10px) saturate(145%);
+}
+
+button.card-3d-featured:hover:not(:disabled) {
+  transform: translateY(-2px);
+}
+
+button.card-3d-featured:active:not(:disabled) {
+  transform: translateY(1px) scale(0.99);
+}
+
+/* Primary 3D Action Button */
+.btn-3d-primary {
+  background: linear-gradient(
+    135deg,
+    #38bdf8 0%,
+    #06b6d4 50%,
+    #0284c7 100%
+  );
+
+  border: 1px solid rgba(255,255,255,0.65);
+
+  box-shadow:
+    inset 0 2px 1px 0 rgba(255,255,255,0.85),
+    inset 0 -2.5px 0 0 rgba(3,105,161,0.50),
+    0 6px 18px -2px rgba(6,182,212,0.46),
+    0 0 12px -2px rgba(34,211,238,0.30);
+
+  color: #ffffff;
+  transition: all 0.18s cubic-bezier(0.2,0.8,0.3,1);
+}
+
+.btn-3d-primary:hover:not(:disabled) {
+  filter: brightness(1.07);
+  transform: translateY(-1.5px);
+}
+
+.btn-3d-primary:active:not(:disabled) {
+  transform: translateY(1px) scale(0.975);
+}
+
+/* Secondary 3D Icon & Utility Surface */
+.icon-3d-secondary {
+  background: linear-gradient(
+    155deg,
+    rgba(240, 249, 255, 0.86) 0%,
+    rgba(224, 242, 254, 0.80) 62%,
+    rgba(186, 230, 253, 0.74) 100%
+  );
+
+  border: 1.5px solid rgba(125,211,252,0.78);
+
+  box-shadow:
+    inset 0 1.5px 0.5px 0 rgba(255,255,255,0.90),
+    inset 0 -2px 0 0 rgba(14,165,233,0.24),
+    0 4px 12px -1px rgba(3,105,161,0.12);
+
+  color: #0284c7;
+  transition: all 0.18s cubic-bezier(0.2,0.8,0.3,1);
+}
+
+.dark .icon-3d-secondary {
+  background: linear-gradient(
+    155deg,
+    rgba(23, 46, 96, 0.86) 0%,
+    rgba(11, 24, 56, 0.90) 100%
+  );
+
+  border: 1px solid rgba(56,189,248,0.48);
+
+  box-shadow:
+    inset 0 1.5px 0.5px 0 rgba(255,255,255,0.26),
+    inset 0 -2px 0 0 rgba(0,0,0,0.54),
+    0 5px 12px -1px rgba(0,0,0,0.62),
+    0 0 10px -2px rgba(56,189,248,0.22);
+
+  color: #38bdf8;
+}
+
+button.icon-3d-secondary:hover:not(:disabled) {
+  transform: translateY(-1.5px);
+}
+
+button.icon-3d-secondary:active:not(:disabled) {
+  transform: translateY(1px) scale(0.97);
+}
+
+button:focus-visible,
+[tabindex="0"]:focus-visible {
+  outline: 2px solid #38bdf8;
+  outline-offset: 2px;
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+.safe-viewport-pad {
+  padding-top: max(0.625rem, env(safe-area-inset-top));
+  padding-bottom: max(0.625rem, env(safe-area-inset-bottom));
+  padding-left: max(0.875rem, env(safe-area-inset-left));
+  padding-right: max(0.875rem, env(safe-area-inset-right));
+}
+
+.safe-home-pad {
+  padding-top: max(0.5rem, env(safe-area-inset-top));
+  padding-bottom: max(0.625rem, env(safe-area-inset-bottom));
+  padding-left: max(0.75rem, env(safe-area-inset-left));
+  padding-right: max(0.75rem, env(safe-area-inset-right));
+}
+
+/* ============================================================================
+   PHASE L2.5 — COMPOSITOR-ONLY INTERACTION & COMPLETION MICRO-ANIMATIONS
+   ============================================================================ */
+
+@keyframes lqSlotPop {
+  0% {
+    transform: scale(0.95);
+  }
+  60% {
+    transform: scale(1.03);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes lqShakeSubtle {
+  0%, 100% {
+    transform: translate3d(0, 0, 0);
+  }
+  25% {
+    transform: translate3d(-4px, 0, 0);
+  }
+  50% {
+    transform: translate3d(4px, 0, 0);
+  }
+  75% {
+    transform: translate3d(-2px, 0, 0);
+  }
+}
+
+@keyframes lqSolveCelebration {
+  0% {
+    transform: scale(0.96) translateY(3px);
+    opacity: 0.75;
+  }
+  65% {
+    transform: scale(1.02) translateY(-1px);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes lqFadeInQuick {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 4px, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.lq-slot-pop {
+  animation: lqSlotPop 0.16s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.lq-shake-subtle {
+  animation: lqShakeSubtle 0.22s cubic-bezier(0.36, 0.07, 0.19, 0.97);
+}
+
+.lq-solve-celebration {
+  animation: lqSolveCelebration 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.lq-fade-in {
+  animation: lqFadeInQuick 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ============================================================================
+   REWARD POLISH — LEVEL-UP, WIN STREAK & RADIAL PARTICLE CELEBRATIONS
+   ============================================================================ */
+
+@keyframes lqLevelUpStageReveal {
+  0% {
+    opacity: 0;
+    transform: scale(0.92) translate3d(0, 8px, 0);
+  }
+  55% {
+    opacity: 1;
+    transform: scale(1.03) translate3d(0, -2px, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translate3d(0, 0, 0);
+  }
+}
+
+@keyframes lqLevelNumberHeroPop {
+  0% {
+    opacity: 0;
+    transform: scale(0.65) rotate(-4deg);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.14) rotate(2deg);
+  }
+  82% {
+    transform: scale(0.97) rotate(0deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+@keyframes lqStreakNumberPop {
+  0% {
+    transform: scale(0.78) translate3d(0, 3px, 0);
+  }
+  55% {
+    transform: scale(1.26) translate3d(0, -2px, 0);
+  }
+  100% {
+    transform: scale(1) translate3d(0, 0, 0);
+  }
+}
+
+@keyframes lqMilestoneAuraPulse {
+  0% {
+    transform: scale(0.95);
+    opacity: 0.85;
+  }
+  50% {
+    transform: scale(1.035);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes lqParticleBurstOut {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 0, 0) scale(0.35);
+  }
+  20% {
+    opacity: 1;
+    transform: translate3d(calc(var(--tx, 0px) * 0.35), calc(var(--ty, 0px) * 0.35), 0) scale(1.15);
+  }
+  75% {
+    opacity: 0.9;
+    transform: translate3d(calc(var(--tx, 0px) * 0.88), calc(var(--ty, 0px) * 0.88), 0) scale(0.9);
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(var(--tx, 0px), var(--ty, 0px), 0) scale(0.15);
+  }
+}
+
+@keyframes lqShimmerSweep {
+  0% {
+    transform: translate3d(-110%, 0, 0);
+  }
+  100% {
+    transform: translate3d(110%, 0, 0);
+  }
+}
+
+.lq-levelup-stage {
+  position: relative;
+  overflow: hidden;
+  animation: lqLevelUpStageReveal 0.48s cubic-bezier(0.16, 1, 0.3, 1) both;
+  box-shadow:
+    0 14px 34px -10px rgba(14, 165, 233, 0.38),
+    0 0 26px -4px rgba(245, 158, 11, 0.35),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.55);
+}
+
+.dark .lq-levelup-stage {
+  box-shadow:
+    0 18px 40px -10px rgba(2, 6, 23, 0.85),
+    0 0 32px -4px rgba(56, 189, 248, 0.45),
+    0 0 20px -4px rgba(251, 191, 36, 0.32),
+    inset 0 1px 0 0 rgba(186, 230, 253, 0.35);
+}
+
+.lq-level-badge-pop {
+  animation: lqLevelNumberHeroPop 0.58s cubic-bezier(0.16, 1, 0.3, 1) 0.06s both;
+  box-shadow:
+    0 10px 24px -4px rgba(245, 158, 11, 0.5),
+    0 0 20px rgba(56, 189, 248, 0.45),
+    inset 0 1.5px 0 rgba(255, 255, 255, 0.65);
+}
+
+.lq-streak-num-pop {
+  display: inline-block;
+  animation: lqStreakNumberPop 0.38s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.lq-milestone-card-glow {
+  position: relative;
+  overflow: hidden;
+  animation: lqMilestoneAuraPulse 0.46s cubic-bezier(0.16, 1, 0.3, 1) both;
+  box-shadow:
+    0 12px 30px -8px rgba(245, 158, 11, 0.42),
+    0 0 22px -3px rgba(56, 189, 248, 0.35),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.5);
+}
+
+.lq-shimmer-sweep::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    105deg,
+    transparent 20%,
+    rgba(255, 255, 255, 0.28) 50%,
+    transparent 80%
+  );
+  animation: lqShimmerSweep 0.95s cubic-bezier(0.16, 1, 0.3, 1) 0.08s both;
+}
+
+.lq-particle-burst {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.lq-particle {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 7px;
+  height: 7px;
+  margin-left: -3.5px;
+  margin-top: -3.5px;
+  border-radius: 9999px;
+  opacity: 0;
+  will-change: transform, opacity;
+  animation: lqParticleBurstOut 0.82s cubic-bezier(0.16, 1, 0.3, 1) var(--delay, 0s) forwards;
+}
+
+.lq-particle-gold {
+  background: radial-gradient(circle, #fef08a 0%, #f59e0b 75%, transparent 100%);
+  box-shadow: 0 0 8px rgba(251, 191, 36, 0.85);
+}
+
+.lq-particle-cyan {
+  background: radial-gradient(circle, #e0f2fe 0%, #38bdf8 75%, transparent 100%);
+  box-shadow: 0 0 8px rgba(56, 189, 248, 0.85);
+}
+
+.lq-particle-violet {
+  background: radial-gradient(circle, #f3e8ff 0%, #a855f7 75%, transparent 100%);
+  box-shadow: 0 0 8px rgba(168, 85, 247, 0.85);
+}
+
+/* Short Mobile Landscape Adaptation (e.g. 640×360, 844×390) */
+@media (max-height: 500px) and (orientation: landscape) {
+  .home-viewport-shell {
+    padding-top: max(0.35rem, env(safe-area-inset-top));
+    padding-bottom: max(0.35rem, env(safe-area-inset-bottom));
+    gap: 0.35rem;
+  }
+
+  .home-core-stage {
+    min-height: 76px;
+  }
+
+  .home-actions-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.45rem;
+  }
+
+  .home-action-card {
+    min-height: 46px;
+    padding: 0.4rem 0.55rem;
+    border-radius: 0.9rem;
+  }
+
+  .gameplay-viewport-shell {
+    padding-top: max(0.35rem, env(safe-area-inset-top));
+    padding-bottom: max(0.35rem, env(safe-area-inset-bottom));
+    gap: 0.35rem;
+  }
+
+  .gameplay-board-container {
+    padding: 0.65rem 0.9rem;
+    gap: 0.45rem;
+  }
+
+  .gameplay-slot-card {
+    min-height: 44px;
+    padding: 0.35rem 0.5rem;
+  }
+}
+
+@media (width < 768px), (max-width: 960px) and (max-height: 500px) and (orientation: landscape) {
+  :root {
+    --text-xs: 1rem;
+    --text-xs--line-height: 1.4;
+    --text-sm: 1rem;
+    --text-sm--line-height: 1.4;
+  }
+
+  html,
+  body,
+  .gameplay-viewport-shell {
+    overflow-x: visible;
+  }
+
+  body {
+    font-size: 1rem;
+    overflow-wrap: anywhere;
+  }
+
+  .text-\[9px\],
+  .text-\[10px\],
+  .text-\[11px\] {
+    font-size: 1rem;
+  }
+
+  .truncate {
+    overflow: visible;
+    white-space: normal;
+  }
+
+  :where(button, input, select, summary, a[href]) {
+    min-inline-size: 44px;
+    min-block-size: 44px;
+  }
+
+  :where(img, video, iframe, embed, object, canvas) {
+    max-inline-size: 100%;
+  }
+
+  .home-route-shell,
+  .home-viewport-shell {
+    min-height: 100dvh;
+    height: auto;
+    max-height: none;
+    overflow: visible;
+  }
+
+  .home-core-stage {
+    min-height: clamp(120px, 52dvh, 500px);
+  }
+
+  .home-menu-toggle {
+    display: inline-flex;
+  }
+
+  .home-actions-grid {
+    order: 0;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .home-actions-grid[data-open='false'] {
+    display: none;
+  }
+
+  .gameplay-controls,
+  .settings-music-controls {
+    flex-wrap: wrap;
+  }
+
+  .gameplay-pause-panel {
+    margin-block: auto;
+  }
+
+  .puzzle-keypad {
+    grid-template-columns: repeat(auto-fit, minmax(44px, 1fr));
+  }
+
+  .puzzle-deduction-grid {
+    overflow: visible;
+  }
+
+  .puzzle-deduction-grid table {
+    table-layout: fixed;
+  }
+
+  .puzzle-deduction-grid :is(th, td) {
+    padding-inline: 2px;
+    white-space: normal;
+  }
+
+  .puzzle-deduction-mark {
+    display: none;
+  }
+}
+
+@media (width < 640px) {
+  .home-actions-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .gameplay-header {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+  }
+
+  .gameplay-score {
+    justify-self: end;
+  }
+
+  .gameplay-title {
+    grid-area: 2 / 1 / auto / -1;
+    justify-content: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .lq-particle-burst,
+  .lq-particle,
+  .lq-shimmer-sweep::after {
+    display: none !important;
+  }
+}
+

@@ -1,0 +1,6 @@
+{
+  "name": "Logic Quest",
+  "description": "A futuristic logic-puzzle and brain-challenge game featuring eight puzzle disciplines, interactive 3D geometry, and deterministic daily challenges.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
