@@ -1,5 +1,5 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://logic-quest-v1.efazaiman9.workers.dev/
+Sitemap: https://logic-quest-v1.efazaiman9.workers.dev/sitemap.xml
 
